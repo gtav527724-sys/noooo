@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --accent: #22d3ee;
+  --accent2: #a78bfa;
+  --blur: 20px;
+}
+
+html, body {
+  background: #050508;
+  color: #fff;
+  min-height: 100%;
+  -webkit-font-smoothing: antialiased;
+}
+
+* { -webkit-tap-highlight-color: transparent; }
+
+.glass {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(var(--blur));
+  -webkit-backdrop-filter: blur(var(--blur));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.glass-strong {
+  background: rgba(10, 12, 20, 0.72);
+  backdrop-filter: blur(calc(var(--blur) + 8px));
+  -webkit-backdrop-filter: blur(calc(var(--blur) + 8px));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.accent-text { color: var(--accent); }
+.accent-bg { background: var(--accent); }
+.accent-border { border-color: var(--accent); }
+.accent-grad { background: linear-gradient(120deg, var(--accent), var(--accent2)); }
+
+.no-anim *, .no-anim *::before, .no-anim *::after {
+  animation: none !important;
+  transition: none !important;
+}
+
+@keyframes spin-vinyl { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+.spinning-vinyl { animation: spin-vinyl 6s linear infinite; }
+
+@keyframes eq-bar { 0%, 100% { transform: scaleY(0.25); } 50% { transform: scaleY(1); } }
+.eq-bar { transform-origin: bottom; animation: eq-bar 0.9s ease-in-out infinite; }
+
+@keyframes float-slow { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+.float-slow { animation: float-slow 7s ease-in-out infinite; }
+
+/* thin custom scrollbar */
+* { scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.25) transparent; }
+*::-webkit-scrollbar { width: 6px; height: 6px; }
+*::-webkit-scrollbar-track { background: transparent; }
+*::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.22); border-radius: 999px; }
+*::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+input[type='range'] { accent-color: var(--accent); }
+
+.clamp-1 { display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
+.clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
